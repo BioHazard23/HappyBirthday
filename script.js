@@ -1,9 +1,8 @@
-// script.js
+const playBtn = document.getElementById("playMusic");
+const audio = document.getElementById("birthdaySong");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const playBtn = document.getElementById("playMusic");
-  const audio = document.getElementById("birthdaySong");
-
+// Asegurar que ambos elementos existen antes de interactuar
+if (playBtn && audio) {
   // Establecer volumen al 30%
   audio.volume = 0.3;
 
@@ -17,28 +16,26 @@ document.addEventListener("DOMContentLoaded", () => {
       playBtn.querySelector(".music-icon").classList.remove("animate");
     }
   });
+}
 
-  // ============================
-  // CONFETI ANIMADO
-  // ============================
+// ============================
+// CONFETI ANIMADO
+// ============================
 
-  const confettiContainer = document.getElementById("confetti-container");
+const confettiContainer = document.getElementById("confetti-container");
 
-  function createConfetti() {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = `${Math.random() * 100}%`;
-    confetti.style.animationDuration = `${6 + Math.random() * 4}s`; // más lento
-    confetti.style.opacity = Math.random();
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-    confettiContainer.appendChild(confetti);
+function createConfetti() {
+  const confetti = document.createElement("div");
+  confetti.classList.add("confetti");
+  confetti.style.left = `${Math.random() * 100}%`;
+  confetti.style.animationDuration = `${6 + Math.random() * 4}s`; // más lento
+  confetti.style.opacity = Math.random();
+  confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+  confettiContainer.appendChild(confetti);
 
-    // Eliminar confeti después de animación
-    setTimeout(() => {
-      confetti.remove();
-    }, 10000); // tiempo suficiente para caer
-  }
+  setTimeout(() => {
+    confetti.remove();
+  }, 10000);
+}
 
-  // Crear confeti continuamente
-  setInterval(createConfetti, 300);
-});
+setInterval(createConfetti, 300);
