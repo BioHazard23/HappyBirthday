@@ -1,0 +1,335 @@
+/* ============================
+   - ESTILOS GENERALES.
+============================= */
+body {
+    margin: 0;
+    padding: 0;
+    background: #071739;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================
+   - GLOBOS DE CUMPLEAÑOS.
+============================= */
+.balloons-container {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.birthday-row {
+    margin-top: 10px;
+}
+
+.balloon {
+    width: 75px;
+    height: 100px;
+    border-radius: 50% 50% 45% 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Colores de globos en tonos pastel moderados */
+.red {
+    background-color: #e57373;
+}
+
+.blue {
+    background-color: #64b5f6;
+}
+
+.purple {
+    background-color: #ba68c8;
+}
+
+.white {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.black {
+    background-color: #424242;
+}
+
+/* Cuerda de los globos */
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    width: 2px;
+    height: 25px;
+    background: #ddd;
+}
+
+/* ============================
+   - ANIMACIÓN DE GLOBOS.
+============================= */
+.balloon {
+  animation: float 6s ease-in-out infinite;
+}
+
+.balloon:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.balloon:nth-child(3) {
+  animation-delay: 1s;
+}
+.balloon:nth-child(4) {
+  animation-delay: 1.5s;
+}
+.balloon:nth-child(5) {
+  animation-delay: 2s;
+}
+.balloon:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(0);
+  }
+  75% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* ============================
+   - MENSAJE PERSONALIZADO.
+============================= */
+.message-container {
+    margin-top: 70px;
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(145deg, #071739, #4B6382);
+    border-radius: 25px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2.5px solid #E3C39D;
+    animation: fadeInUp 1.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-container::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #E3C39D 0%, transparent 70%);
+    opacity: 0.1;
+    animation: rotateGlow 8s linear infinite;
+}
+
+.message-container h2 {
+    font-size: 2.8rem;
+    margin-bottom: 18px;
+    color: #E3C39D;
+    letter-spacing: 1.2px;
+    animation: popIn 1s ease;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.message-container p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #CDD5DB;
+    animation: fadeInText 2s ease-in-out;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: block;
+  color: #fff;
+  text-shadow: 0 0 10px #E3C39D, 0 0 20px #E3C39D, 0 0 30px #E3C39D;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.glow {
+  display: block;
+  color: #fff;
+  text-shadow: 0 0 10px #E3C39D, 0 0 20px #E3C39D, 0 0 30px #E3C39D;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 10px #E3C39D, 0 0 20px #E3C39D; }
+  50% { text-shadow: 0 0 15px #E3C39D, 0 0 30px #E3C39D; }
+}
+
+/* ============================
+   - ANIMACIONES MENSAJE.
+============================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateGlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================
+   - BOTÓN DE MÚSICA.
+============================= */
+.audio-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#playMusic {
+    background: linear-gradient(145deg, #E3C39D, #A68868);
+    color: #071739;
+    font-size: 1.2rem;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#playMusic:hover {
+    background: linear-gradient(145deg, #A68868, #E3C39D);
+    transform: scale(1.05);
+    color: white;
+}
+
+.music-icon {
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+}
+
+.music-icon.animate {
+    animation: beat 1s infinite alternate;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2) rotate(5deg);
+    }
+}
+
+/* ============================
+   - CONFETI.
+============================= */
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--confetti-color);
+  opacity: 0.7;
+  border-radius: 50%;
+  animation: fall 10s linear infinite;
+}
+
+.confetti:nth-child(odd) {
+  animation-delay: calc(-1s * var(--i));
+}
+
+.confetti:nth-child(even) {
+  animation-delay: calc(-2s * var(--i));
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================
+   - RESPONSIVE.
+============================= */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+
+  .balloon {
+    width: 30px;
+    height: 45px;
+  }
+}
