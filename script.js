@@ -1,22 +1,33 @@
-document.getElementById('playMusic').addEventListener('click', function () {
-    const audio = document.getElementById('birthdaySong');
-    audio.volume = 0.3; // Volumen al 30%
-    audio.currentTime = 0; // Reiniciar la canción al inicio
-    audio.play();
-    this.disabled = true;
-    this.innerHTML = "<span class='music-icon animate'>🎶</span> Reproduciendo...";
-  });
+// ----------------------------
+//   Control de música
+// ----------------------------
+const playBtn = document.getElementById("playMusic");
+const audio = document.getElementById("birthdaySong");
 
-// CONFETI ANIMADO.
-const confettiContainer = document.getElementById("confetti-container");
+audio.volume = 0.3;
+
+playBtn.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    playBtn.querySelector(".music-icon").classList.add("animate");
+  } else {
+    audio.pause();
+    playBtn.querySelector(".music-icon").classList.remove("animate");
+  }
+});
+
+// ----------------------------
+//   Confeti animado
+// ----------------------------
+const confettiContainer = document.createElement("div");
+confettiContainer.id = "confetti-container";
+document.body.appendChild(confettiContainer);
 
 function createConfetti() {
   const confetti = document.createElement("div");
   confetti.classList.add("confetti");
-  confetti.style.left = `${Math.random() * 100}vw`;
-  confetti.style.animationDuration = `${8 + Math.random() * 4}s`; // Más lento
-  confetti.style.opacity = Math.random();
-  confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.animationDuration = (8 + Math.random() * 4) + "s";
   confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
   confettiContainer.appendChild(confetti);
 
@@ -24,4 +35,5 @@ function createConfetti() {
     confetti.remove();
   }, 12000);
 }
-setInterval(createConfetti, 300);
+
+setInterval(createConfetti, 500);
