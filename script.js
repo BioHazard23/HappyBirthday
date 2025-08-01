@@ -4,7 +4,7 @@ const audio = document.getElementById("birthdaySong");
 // Asegurar que ambos elementos existen antes de interactuar
 if (playBtn && audio) {
   // Establecer volumen al 30%
-  audio.volume = 0.3;
+  audio.volume = 1.2;
 
   // Botón de reproducción
   playBtn.addEventListener("click", () => {
