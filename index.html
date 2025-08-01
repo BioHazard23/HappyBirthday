@@ -52,15 +52,14 @@
         <button id="playMusic">
             <span class="music-icon">🎵</span> Reproducir canción de cumpleaños
         </button>
-        <audio id="birthdaySong" loop>
-            <source src="happy-birthday.mp3" type="audio/mpeg">
+        <audio id="birthdaySong">
+            <source src="happy-birthday.mp3" preload="auto" type="audio/mpeg">
             Tu navegador no soporta audio.
         </audio>
     </div>
 
     <div id="confetti-container"></div>
 
-    <script src="script.js"></script>
-
 </body>
+<script src="script.js"></script>
 </html>

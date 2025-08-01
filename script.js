@@ -1,39 +1,44 @@
-// ----------------------------
-//   Control de música
-// ----------------------------
-const playBtn = document.getElementById("playMusic");
-const audio = document.getElementById("birthdaySong");
+// script.js
 
-audio.volume = 0.3;
+document.addEventListener("DOMContentLoaded", () => {
+  const playBtn = document.getElementById("playMusic");
+  const audio = document.getElementById("birthdaySong");
 
-playBtn.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play();
-    playBtn.querySelector(".music-icon").classList.add("animate");
-  } else {
-    audio.pause();
-    playBtn.querySelector(".music-icon").classList.remove("animate");
+  // Establecer volumen al 30%
+  audio.volume = 0.3;
+
+  // Botón de reproducción
+  playBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.querySelector(".music-icon").classList.add("animate");
+    } else {
+      audio.pause();
+      playBtn.querySelector(".music-icon").classList.remove("animate");
+    }
+  });
+
+  // ============================
+  // CONFETI ANIMADO
+  // ============================
+
+  const confettiContainer = document.getElementById("confetti-container");
+
+  function createConfetti() {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.animationDuration = `${6 + Math.random() * 4}s`; // más lento
+    confetti.style.opacity = Math.random();
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+    confettiContainer.appendChild(confetti);
+
+    // Eliminar confeti después de animación
+    setTimeout(() => {
+      confetti.remove();
+    }, 10000); // tiempo suficiente para caer
   }
+
+  // Crear confeti continuamente
+  setInterval(createConfetti, 300);
 });
-
-// ----------------------------
-//   Confeti animado
-// ----------------------------
-const confettiContainer = document.createElement("div");
-confettiContainer.id = "confetti-container";
-document.body.appendChild(confettiContainer);
-
-function createConfetti() {
-  const confetti = document.createElement("div");
-  confetti.classList.add("confetti");
-  confetti.style.left = Math.random() * 100 + "vw";
-  confetti.style.animationDuration = (8 + Math.random() * 4) + "s";
-  confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
-  confettiContainer.appendChild(confetti);
-
-  setTimeout(() => {
-    confetti.remove();
-  }, 12000);
-}
-
-setInterval(createConfetti, 500);
