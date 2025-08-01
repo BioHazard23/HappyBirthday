@@ -1,55 +1,27 @@
-// ============================
-//   - CONTROL MÚSICA
-// ============================
-const playBtn = document.getElementById("play-btn");
-const playIcon = document.querySelector("#play-btn i");
-const bgMusic = document.getElementById("bg-music");
+document.getElementById('playMusic').addEventListener('click', function () {
+    const audio = document.getElementById('birthdaySong');
+    audio.volume = 0.3; // Volumen al 30%
+    audio.currentTime = 0; // Reiniciar la canción al inicio
+    audio.play();
+    this.disabled = true;
+    this.innerHTML = "<span class='music-icon animate'>🎶</span> Reproduciendo...";
+  });
 
-bgMusic.volume = 0.3;
+// CONFETI ANIMADO.
+const confettiContainer = document.getElementById("confetti-container");
 
-playBtn.addEventListener("click", () => {
-    if (bgMusic.paused) {
-        bgMusic.play();
-        playIcon.classList.remove("fa-play");
-        playIcon.classList.add("fa-pause");
-    } else {
-        bgMusic.pause();
-        playIcon.classList.remove("fa-pause");
-        playIcon.classList.add("fa-play");
-    }
-});
-
-// ============================
-//   - CONFETI
-// ============================
 function createConfetti() {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.animationDuration = 3 + Math.random() * 3 + "s";
-    confetti.style.opacity = Math.random();
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-    document.body.appendChild(confetti);
+  const confetti = document.createElement("div");
+  confetti.classList.add("confetti");
+  confetti.style.left = `${Math.random() * 100}vw`;
+  confetti.style.animationDuration = `${8 + Math.random() * 4}s`; // Más lento
+  confetti.style.opacity = Math.random();
+  confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+  confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
+  confettiContainer.appendChild(confetti);
 
-    setTimeout(() => {
-        confetti.remove();
-    }, 6000); // duración más larga para caída lenta
+  setTimeout(() => {
+    confetti.remove();
+  }, 12000);
 }
-
-setInterval(createConfetti, 150); // más espaciado, más natural
-
-// ============================
-//   - MOVIMIENTO DE GLOBOS
-// ============================
-const balloons = document.querySelectorAll(".balloon");
-
-balloons.forEach((balloon, index) => {
-    let direction = 1;
-    let pos = 0;
-
-    setInterval(() => {
-        if (pos >= 20 || pos <= -20) direction *= -1;
-        pos += direction;
-        balloon.style.transform = `translateY(${pos}px)`;
-    }, 100 + index * 20); // tiempos distintos para variación
-});
+setInterval(createConfetti, 300);

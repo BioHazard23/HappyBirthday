@@ -12,7 +12,7 @@ body {
    - GLOBOS DE CUMPLEAÑOS.
 ============================= */
 .balloons-container {
-    dis: flex;
+    display: flex;
     justify-content: center;
     gap: 18px;
     margin-top: 40px;
