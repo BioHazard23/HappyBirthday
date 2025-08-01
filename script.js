@@ -31,7 +31,7 @@ function createConfetti() {
   confetti.style.animationDuration = `${6 + Math.random() * 4}s`; // más lento
   confetti.style.opacity = Math.random();
   confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-  //confettiContainer.appendChild(confetti);
+  confetti.appendChild(confetti);
 
   setTimeout(() => {
     confetti.remove();
